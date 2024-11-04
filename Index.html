@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twibbon Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Twibbon Ulang Tahun Desa Bina Bhakti ke-32</h1>
+
+        <!-- 1. Upload Photo -->
+        <div class="section">
+            <label for="uploadPhoto">1. Upload Foto:</label>
+            <input type="file" id="uploadPhoto" accept="image/*">
+        </div>
+
+        <!-- 2. Enter Name -->
+        <div class="section">
+            <label for="inputName">2. Tulis Nama:</label>
+            <input type="text" id="inputName" placeholder="Masukkan Nama">
+            <label for="fontSelect">Jenis Font:</label>
+            <select id="fontSelect">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+            <label for="colorSelect">Warna Teks:</label>
+            <input type="color" id="colorSelect" value="#000000">
+        </div>
+
+        <!-- 3. Design Twibbon -->
+        <div class="canvas-container">
+            <h2>3. Desain Twibbon:</h2>
+            <canvas id="twibbonCanvas" width="720" height="720"></canvas>
+        </div>
+
+        <!-- 4. Controls for adjusting text position -->
+        <div class="controls">
+            <label>4. Atur Posisi Nama:</label>
+            <button onclick="moveText('up')">&#8593;</button> <!-- Atas -->
+            <button onclick="moveText('down')">&#8595;</button> <!-- Bawah -->
+            <button onclick="moveText('left')">&#8592;</button> <!-- Kiri -->
+            <button onclick="moveText('right')">&#8594;</button> <!-- Kanan -->
+        </div>
+
+        <!-- 5. Controls for adjusting image size and position -->
+        <div class="controls">
+            <label>5. Atur Ukuran dan Posisi Foto:</label>
+            <button onclick="resizeImage('increase')">&#x2795;</button> <!-- Perbesar -->
+            <button onclick="resizeImage('decrease')">&#x2796;</button> <!-- Perkecil -->
+            <button onclick="moveImage('up')">&#8593;</button> <!-- Atas -->
+            <button onclick="moveImage('down')">&#8595;</button> <!-- Bawah -->
+            <button onclick="moveImage('left')">&#8592;</button> <!-- Kiri -->
+            <button onclick="moveImage('right')">&#8594;</button> <!-- Kanan -->
+        </div>
+
+        <!-- Download Button -->
+        <button onclick="downloadImage()">Download Twibbon</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
