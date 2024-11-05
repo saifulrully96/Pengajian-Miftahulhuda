@@ -21,6 +21,8 @@ body {
     padding: 20px;
     width: 90%;
     max-width: 600px;
+    max-height: 80vh; /* Membatasi tinggi container agar tidak melebihi 80% dari tinggi viewport */
+    overflow-y: auto; /* Menambahkan scroll bar vertikal bila konten melebihi tinggi maksimal */
 }
 
 h1 {
