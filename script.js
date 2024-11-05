@@ -24,20 +24,25 @@ twibbonImage.onload = () => {
 
 // Upload photo
 document.getElementById('uploadPhoto').addEventListener('change', function(e) {
+document.getElementById('uploadPhoto').addEventListener('change', function(e) {
     const reader = new FileReader();
     reader.onload = function(event) {
         img = new Image();
         img.onload = function() {
-            imgWidth = 200; // Reset width of the uploaded image
-            imgHeight = 200; // Reset height of the uploaded image
-            imgX = (canvas.width - imgWidth) / 2; // Center image horizontally
-            imgY = (canvas.height - imgHeight) / 2; // Center image vertically
-            draw(); // Redraw after image is uploaded
-        }
+            // Mengatur ukuran gambar sesuai ukuran asli
+            imgWidth = img.naturalWidth;
+            imgHeight = img.naturalHeight;
+
+            // Memastikan gambar tetap terpusat di canvas
+            imgX = (canvas.width - imgWidth) / 2;
+            imgY = (canvas.height - imgHeight) / 2;
+            draw(); // Menggambar ulang setelah gambar diunggah
+        };
         img.src = event.target.result;
-    }
+    };
     reader.readAsDataURL(e.target.files[0]);
 });
+
 
 // Drawing function
 function draw() {
