@@ -3,8 +3,8 @@ const ctx = canvas.getContext('2d');
 
 let img = new Image();
 
-let imgWidth = 600; // Set initial image width
-let imgHeight = 600; // Set initial image height
+let imgWidth = 1000; // Set initial image width
+let imgHeight = 1000; // Set initial image height
 let imgX = (canvas.width - imgWidth) / 2; // Center image horizontally
 let imgY = (canvas.height - imgHeight) / 2; // Center image vertically
 
