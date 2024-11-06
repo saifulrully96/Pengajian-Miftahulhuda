@@ -12,10 +12,10 @@ let currentColor = '#000000'; // Default text color
 
 // Muat template Twibbon
 const twibbonImage = new Image();
-twibbonImage.crossOrigin = "Anonymous"; // Add CORS to avoid tainted canvas issue
+twibbonImage.crossOrigin = "Anonymous";
 twibbonImage.src = 'twibbon.png';
 twibbonImage.onload = () => {
-    draw(); // Menggambar ulang setelah gambar Twibbon dimuat
+    draw(); // Panggil draw ketika twibbon sudah dimuat
 };
 
 // Mengupload foto
@@ -24,11 +24,11 @@ document.getElementById('uploadPhoto').addEventListener('change', function(e) {
     reader.onload = function(event) {
         img = new Image();
         img.onload = function() {
-            imgWidth = 300; // Reset width of the uploaded image
-            imgHeight = 300; // Reset height of the uploaded image
-            imgX = (canvas.width - imgWidth) / 2; // Center image horizontally
-            imgY = (canvas.height - imgHeight) / 2; // Center image vertically
-            draw(); // Menggambar ulang setelah gambar diupload
+            imgWidth = 300; 
+            imgHeight = 300;
+            imgX = (canvas.width - imgWidth) / 2; 
+            imgY = (canvas.height - imgHeight) / 2; 
+            draw(); // Panggil draw ketika gambar yang diunggah selesai dimuat
         }
         img.src = event.target.result;
     }
@@ -37,67 +37,74 @@ document.getElementById('uploadPhoto').addEventListener('change', function(e) {
 
 // Menggambar canvas
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Menghapus canvas
-    ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight); // Menggambar gambar yang diupload terlebih dahulu
-    ctx.drawImage(twibbonImage, 0, 0, canvas.width, canvas.height); // Menggambar gambar Twibbon di atas
-    ctx.font = `30px ${currentFont}`; // Mengatur font
-    ctx.fillStyle = currentColor; // Mengatur warna teks
-    ctx.fillText(document.getElementById('inputName').value, textX, textY); // Menggambar teks
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Bersihkan canvas
+    
+    // Pastikan gambar sudah selesai dimuat sebelum menggambar
+    if (img.complete) {
+        ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight); // Gambar yang diupload terlebih dahulu
+    }
+    if (twibbonImage.complete) {
+        ctx.drawImage(twibbonImage, 0, 0, canvas.width, canvas.height); // Lalu gambar twibbon
+    }
+    
+    ctx.font = `30px ${currentFont}`; // Set font
+    ctx.fillStyle = currentColor; // Set warna teks
+    ctx.fillText(document.getElementById('inputName').value, textX, textY); // Tulis teks
 }
 
 // Menggerakkan teks
 function moveText(direction) {
-    const step = 5; // Jarak gerak
+    const step = 5; 
     switch (direction) {
         case 'up': textY -= step; break;
         case 'down': textY += step; break;
         case 'left': textX -= step; break;
         case 'right': textX += step; break;
     }
-    draw(); // Menggambar ulang setelah memindahkan teks
+    draw(); 
 }
 
 // Mengubah ukuran gambar
 function resizeImage(action) {
-    const resizeStep = 10; // Ukuran perubahan
+    const resizeStep = 10;
     if (action === 'increase') {
         imgWidth += resizeStep;
         imgHeight += resizeStep;
     } else if (action === 'decrease') {
-        imgWidth = Math.max(imgWidth - resizeStep, 10); // Pastikan ukuran tidak kurang dari 10
-        imgHeight = Math.max(imgHeight - resizeStep, 10); // Pastikan ukuran tidak kurang dari 10
+        imgWidth = Math.max(imgWidth - resizeStep, 10);
+        imgHeight = Math.max(imgHeight - resizeStep, 10);
     }
-    draw(); // Menggambar ulang setelah mengubah ukuran
+    draw(); 
 }
 
 // Menggerakkan gambar
 function moveImage(direction) {
-    const step = 5; // Jarak gerak
+    const step = 5;
     switch (direction) {
         case 'up': imgY -= step; break;
         case 'down': imgY += step; break;
         case 'left': imgX -= step; break;
         case 'right': imgX += step; break;
     }
-    draw(); // Menggambar ulang setelah memindahkan gambar
+    draw(); 
 }
 
 // Mengubah jenis font
 document.getElementById('fontSelect').addEventListener('change', function() {
     currentFont = this.value;
-    draw(); // Menggambar ulang setelah mengubah font
+    draw(); 
 });
 
 // Mengubah warna teks
 document.getElementById('colorSelect').addEventListener('input', function() {
     currentColor = this.value;
-    draw(); // Menggambar ulang setelah mengubah warna
+    draw();
 });
 
 // Men-download Twibbon
 function downloadImage() {
     const link = document.createElement('a');
     link.download = 'twibbon.png';
-    link.href = canvas.toDataURL('image/png'); // Dapatkan data URL dari canvas dalam format PNG
-    link.click(); // Klik untuk mendownload
+    link.href = canvas.toDataURL('image/png');
+    link.click();
 }
