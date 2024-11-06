@@ -1,8 +1,8 @@
 const canvas = document.getElementById('twibbonCanvas');
 const ctx = canvas.getContext('2d');
 let img = new Image();
-let imgWidth = img.naturalWidth; // Set initial image width
-let imgHeight = img.naturalHeight; // Set initial image height
+let imgWidth = 600; // Set initial image width
+let imgHeight = 600; // Set initial image height
 let imgX = (canvas.width - imgWidth) / 2; // Center image horizontally
 let imgY = (canvas.height - imgHeight) / 2; // Center image vertically
 let textX = canvas.width / 2;
@@ -24,8 +24,8 @@ document.getElementById('uploadPhoto').addEventListener('change', function(e) {
     reader.onload = function(event) {
         img = new Image();
         img.onload = function() {
-            imgWidth = img.naturalWidth; // Reset width of the uploaded image
-            imgHeight = img.naturalHeight; // Reset height of the uploaded image
+            imgWidth = 600; // Reset width of the uploaded image
+            imgHeight = 600; // Reset height of the uploaded image
             imgX = (canvas.width - imgWidth) / 2; // Center image horizontally
             imgY = (canvas.height - imgHeight) / 2; // Center image vertically
             draw(); // Menggambar ulang setelah gambar diupload
