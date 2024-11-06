@@ -38,8 +38,8 @@ document.getElementById('uploadPhoto').addEventListener('change', function(e) {
 // Menggambar canvas
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Menghapus canvas
-    ctx.drawImage(twibbonImage, 0, 0, canvas.width, canvas.height); // Menggambar gambar Twibbon
-    ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight); // Menggambar gambar yang diupload
+    ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight); // Menggambar gambar yang diupload terlebih dahulu
+    ctx.drawImage(twibbonImage, 0, 0, canvas.width, canvas.height); // Menggambar gambar Twibbon di atas
     ctx.font = `30px ${currentFont}`; // Mengatur font
     ctx.fillStyle = currentColor; // Mengatur warna teks
     ctx.fillText(document.getElementById('inputName').value, textX, textY); // Menggambar teks
