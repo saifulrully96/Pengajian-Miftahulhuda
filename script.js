@@ -24,8 +24,8 @@ document.getElementById('uploadPhoto').addEventListener('change', function(e) {
     reader.onload = function(event) {
         img = new Image();
         img.onload = function() {
-            imgWidth = 600; // Reset width of the uploaded image
-            imgHeight = 600; // Reset height of the uploaded image
+            imgWidth = 300; // Reset width of the uploaded image
+            imgHeight = 300; // Reset height of the uploaded image
             imgX = (canvas.width - imgWidth) / 2; // Center image horizontally
             imgY = (canvas.height - imgHeight) / 2; // Center image vertically
             draw(); // Menggambar ulang setelah gambar diupload
