@@ -18,21 +18,19 @@ twibbonImage.onload = () => {
     draw(); // Panggil draw ketika twibbon sudah dimuat
 };
 
-// Event listener untuk mengunggah foto
+// Mengupload foto
 document.getElementById('uploadPhoto').addEventListener('change', function(e) {
     const reader = new FileReader();
     reader.onload = function(event) {
-        // Membuat objek gambar dari file yang diunggah
-        uploadedImage = new Image();
-        uploadedImage.onload = function() {
-            // Setelah gambar selesai dimuat, gambar di canvas
-            imgWidth = uploadedImage.width;
+        img = new Image();
+        img.onload = function() {
+            imgWidth = uploadedImage.width; 
             imgHeight = uploadedImage.height;
-            imgX = (canvas.width - imgWidth) / 2;
-            imgY = (canvas.height - imgHeight) / 2;
-            drawImage(); // Gambar ulang setelah gambar diunggah
+            imgX = (canvas.width - imgWidth) / 2; 
+            imgY = (canvas.height - imgHeight) / 2; 
+            draw(); // Panggil draw ketika gambar yang diunggah selesai dimuat
         }
-        uploadedImage.src = event.target.result;
+        img.src = event.target.result;
     }
     reader.readAsDataURL(e.target.files[0]);
 });
