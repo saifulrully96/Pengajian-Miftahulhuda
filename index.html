@@ -16,36 +16,15 @@
             <input type="file" id="uploadPhoto" accept="image/*">
         </div>
 
-        <!-- 2. Enter Name -->
-        <div class="section">
-            <label for="inputName">2. Tulis Nama:</label>
-            <input type="text" id="inputName" placeholder="Masukkan Nama">
-            <label for="fontSelect">Jenis Font:</label>
-            <select id="fontSelect">
-                <option value="Arial">Arial</option>
-                <option value="Verdana">Verdana</option>
-                <option value="Times New Roman">Times New Roman</option>
-            </select>
-            <label for="colorSelect">Warna Teks:</label>
-            <input type="color" id="colorSelect" value="#000000">
-        </div>
 
-        <!-- 3. Design Twibbon -->
+        <!-- 2. Design Twibbon -->
         <div class="canvas-container">
             <h2>3. Desain Twibbon:</h2>
             <canvas id="twibbonCanvas" width="600" height="900"></canvas>
         </div>
 
-        <!-- 4. Controls for adjusting text position -->
-        <div class="controls">
-            <label>4. Atur Posisi Nama:</label>
-            <button onclick="moveText('up')">&#8593;</button> <!-- Atas -->
-            <button onclick="moveText('down')">&#8595;</button> <!-- Bawah -->
-            <button onclick="moveText('left')">&#8592;</button> <!-- Kiri -->
-            <button onclick="moveText('right')">&#8594;</button> <!-- Kanan -->
-        </div>
 
-        <!-- 5. Controls for adjusting image size and position -->
+        <!-- 3. Controls for adjusting image size and position -->
         <div class="controls">
             <label>5. Atur Ukuran dan Posisi Foto:</label>
             <button onclick="resizeImage('increase')">&#x2795;</button> <!-- Perbesar -->
