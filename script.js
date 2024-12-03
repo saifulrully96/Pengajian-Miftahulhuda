@@ -52,17 +52,6 @@ function draw() {
     ctx.fillText(document.getElementById('inputName').value, textX, textY); // Tulis teks
 }
 
-// Menggerakkan teks
-function moveText(direction) {
-    const step = 5; 
-    switch (direction) {
-        case 'up': textY -= step; break;
-        case 'down': textY += step; break;
-        case 'left': textX -= step; break;
-        case 'right': textX += step; break;
-    }
-    draw(); 
-}
 
 // Mengubah ukuran gambar
 function resizeImage(action) {
@@ -89,17 +78,6 @@ function moveImage(direction) {
     draw(); 
 }
 
-// Mengubah jenis font
-document.getElementById('fontSelect').addEventListener('change', function() {
-    currentFont = this.value;
-    draw(); 
-});
-
-// Mengubah warna teks
-document.getElementById('colorSelect').addEventListener('input', function() {
-    currentColor = this.value;
-    draw();
-});
 
 // Men-download Twibbon
 function downloadImage() {
